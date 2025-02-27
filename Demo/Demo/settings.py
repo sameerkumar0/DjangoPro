@@ -78,10 +78,20 @@ WSGI_APPLICATION = 'Demo.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
+    
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.mysql',  # Secondary Database (MySQL )
+        'NAME': 'Crud',
+        'USER': 'root',
+        'PASSWORD': 'King#123',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
+    # 'secondary': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+    
 }
 
 
