@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container mt-4">
+        <div class="card shadow-sm p-4">
+            <h2 class="text-center mb-4">{% if todo %} ✏️ Edit Todo {% else %} Create Todo {% endif %}</h2>
+
+            <form method="POST" class="needs-validation" novalidate>
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="title" class="form-label fw-bold">Title:</label>
+                    <input type="text" class="form-control" name="title" id="title" 
+                        value="{% if todo %}{{ todo.title }}{% endif %}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label fw-bold">Description:</label>
+                    <textarea class="form-control" name="description" id="description" rows="4">{% if todo %}{{ todo.description }}{% endif %}</textarea>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" name="completed" id="completed" {% if todo and todo.completed %}checked{% endif %}>
+                    <label class="form-check-label" for="completed">Mark as Completed</label>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success px-4"> Save</button>
+                    <a href="{% url 'todo_list' %}" class="btn btn-danger px-4"> Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

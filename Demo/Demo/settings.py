@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'OtpVerify'
+    'Todo',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -80,17 +81,18 @@ WSGI_APPLICATION = 'Demo.wsgi.application'
 DATABASES = {
     
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # Secondary Database (MySQL )
+        'ENGINE': 'django.db.backends.mysql',  
         'NAME': 'Crud',
         'USER': 'root',
         'PASSWORD': 'King#123',
         'HOST': 'localhost',
         'PORT': '3306',
     },
-    # 'secondary': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
+    # Secondary Database (MySQL )
+    'secondary': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
     
 }
 
@@ -129,9 +131,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'  
+STATICFILES_DIRS = [  
+    os.path.join(BASE_DIR, 'static'),  # Directory for static files inside the project
+]
+
+# Media files (for user uploads like images)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
