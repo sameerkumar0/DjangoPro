@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
+AUTH_USER_MODEL = 'Todo.User' 
 
 import os
 ROOT_URLCONF = 'Demo.urls'
@@ -80,15 +80,16 @@ WSGI_APPLICATION = 'Demo.wsgi.application'
 
 DATABASES = {
     
+    # mysql
     'default': {
         'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'Crud',
+        'NAME': 'Django',
         'USER': 'root',
         'PASSWORD': 'King#123',
         'HOST': 'localhost',
         'PORT': '3306',
     },
-    # Secondary Database (MySQL )
+    # Secondary Database
     'secondary': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
@@ -139,9 +140,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'  
 STATICFILES_DIRS = [  
-    os.path.join(BASE_DIR, 'static'),  # Directory for static files inside the project
+    os.path.join(BASE_DIR, 'static'),  
 ]
 
 # Media files (for user uploads like images)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
